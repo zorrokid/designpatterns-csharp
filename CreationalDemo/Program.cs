@@ -1,4 +1,5 @@
 ﻿using Creational.Builder;
+using Creational.BuilderFacets;
 using Creational.BuilderInheritance;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,26 @@ namespace CreationalDemo
 
 
             var person =
-                Person.New
+                Creational.BuilderInheritance.Person.New
                     .Called("Mikko")
                     .WorksAsA("Software Developer")
                     .Build();
             Console.WriteLine(person);
+
+            // BUILDER FACETS DEMO
+
+            var pb = new PersonBuilderFacade();
+            Creational.BuilderFacets.Person p = pb
+              .Lives
+                .At("123 London Road")
+                .In("London")
+                .WithPostcode("SW12BC")
+              .Works
+                .At("Fabrikam")
+                .AsA("Engineer")
+                .Earning(123000);
+
+            Console.WriteLine(p);
 
         }
     }
