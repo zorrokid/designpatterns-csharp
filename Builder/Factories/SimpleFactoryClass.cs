@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Creational.Factories.SimpleFactoryMethod
+namespace Creational.Factories.SimpleClassFactory
 {
-    public class Point
+    // NOte: static class, no object can be instantiated of this class
+    public static class PointFactory
     {
-        private double x;
-        private double y;
-
         public static Point NewCartesianPoint(double x, double y)
         {
             return new Point(x, y);
@@ -18,20 +16,25 @@ namespace Creational.Factories.SimpleFactoryMethod
         {
             return new Point(rho * Math.Cos(theta), rho * Math.Sin(theta));
         }
-        
-        // Note: private constructor
-        private Point(double x, double y)
+    }
+
+    public class Point
+    {
+        private double x;
+        private double y;
+
+        public Point(double x, double y)
         {
             this.x = x;
             this.y = y;
         }
     }
-    public class SimpleFactoryMethod
+    public class SimpleFactoryClassExample
     {
         public static void TestSimpleFactoryMethod()
         {
-            var point1 = Point.NewCartesianPoint(1, 2);
-            var point2 = Point.NewPolarPoint(5, 6);
+            var point1 = PointFactory.NewCartesianPoint(1, 2);
+            var point2 = PointFactory.NewPolarPoint(5, 6);
         }
     }
 }
