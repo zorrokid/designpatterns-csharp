@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Builder\Creational.csproj">
+      <Project>{e8a5c5fd-5db3-46fe-bc47-17437ae4dcf1}</Project>
+      <Name>Creational</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
